@@ -1,0 +1,120 @@
+/* Background */
+.login-body {
+  /* Elegant gradient background */
+  background: linear-gradient(135deg, #0d6efd, #6610f2, #6f42c1);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1); /* subtle dark overlay */
+  z-index: 1;
+
+  /* Important fix: allow clicks on elements above it */
+  pointer-events: none;
+}
+
+/* Gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glass Effect Card */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  color: white;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input Fields */
+.form-control,
+.form-select {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+}
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.7);
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+.input-group-text {
+  border: none;
+  color: #ffc107;
+}
+
+/* Neon Stylish Button */
+.stylish-btn {
+  font-weight: bold;
+  background: linear-gradient(45deg, #0d6efd, #6610f2);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 0;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px #6610f2, 0 0 20px #0d6efd,
+    0 0 40px rgba(13, 110, 253, 0.6);
+}
+
+/* Hover Glow Effect */
+.stylish-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #0dcaf0, 0 0 40px #0dcaf0, 0 0 80px #0dcaf0;
+  background: linear-gradient(45deg, #0dcaf0, #0d6efd);
+  color: #fff;
+}
+
+/* Role Dropdown */
+.stylish-select {
+  cursor: pointer;
+}
+.stylish-select option {
+  background: #212529;
+  color: #f8f9fa;
+}
+/* Subtitle text under the heading */
+.login-card .text-muted {
+  color: #0dcaf0 !important; /* Neon Cyan */
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 0 5px #0dcaf0, 0 0 10px #0dcaf0, 0 0 20px #0dcaf0;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Hover effect - stronger glow */
+.login-card .text-muted:hover {
+  text-shadow: 0 0 10px #0dcaf0, 0 0 20px #0dcaf0, 0 0 40px #0dcaf0,
+    0 0 60px #0dcaf0;
+  transform: scale(1.05);
+}
