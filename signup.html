@@ -31,6 +31,7 @@
             ></span>
             <input
               type="text"
+              name="fullname"
               class="form-control"
               placeholder="Full Name"
               required
@@ -43,6 +44,7 @@
             ></span>
             <input
               type="email"
+              name="email"
               class="form-control"
               placeholder="Email address"
               required
@@ -55,16 +57,23 @@
             ></span>
             <input
               type="password"
+              name="password"
               class="form-control"
               placeholder="Password"
               required
             />
           </div>
 
+          <!-- Role Dropdown inside glass card -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Select Role</label>
-            <select class="form-select stylish-select" required>
-              <option value="">Choose...</option>
+            <select
+              name="role"
+              id="role"
+              class="form-select stylish-select"
+              required
+            >
+              <option value="" disabled selected>Choose your role</option>
               <option value="student">🎓 Student</option>
               <option value="faculty">👨‍🏫 Faculty</option>
               <option value="admin">👨‍💼 Admin</option>
@@ -82,5 +91,27 @@
         </form>
       </div>
     </div>
+
+    <!-- JavaScript for role-based redirection -->
+    <script>
+      const form = document.getElementById("signupForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Stop form from submitting
+
+        const role = document.getElementById("role").value;
+
+        // Redirect based on role
+        if (role === "student") {
+          window.location.href = "student-dashboard.html";
+        } else if (role === "faculty") {
+          window.location.href = "faculty-dashboard.html";
+        } else if (role === "admin") {
+          window.location.href = "admin-dashboard.html";
+        } else {
+          alert("Please select a role!");
+        }
+      });
+    </script>
   </body>
 </html>
