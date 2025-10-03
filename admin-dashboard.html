@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center</title>
+    
+    <link rel="stylesheet" href="admin-dashboard.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container admin-dashboard">
+        <header class="dashboard-header">
+            <h1 class="header-title admin-title">👑 Smart Hub Admin Center</h1>
+            <div class="header-user admin-user">Welcome, Dr. C. Gates (System Architect)</div>
+        </header>
+
+        <section class="kpi-bar">
+            <div class="kpi-card admin-kpi total-students-kpi">
+                <i class="fas fa-users kpi-icon"></i>
+                <div class="kpi-info">
+                    <span class="kpi-number" id="kpi-students">3,250</span>
+                    <span class="kpi-label">Total Registered Students</span>
+                </div>
+            </div>
+            <div class="kpi-card admin-kpi submitted-kpi">
+                <i class="fas fa-cloud-upload-alt kpi-icon"></i>
+                <div class="kpi-info">
+                    <span class="kpi-number" id="kpi-submitted">1,450</span>
+                    <span class="kpi-label">Activities Submitted (L6M)</span>
+                </div>
+            </div>
+            <div class="kpi-card admin-kpi approval-kpi">
+                <i class="fas fa-check-double kpi-icon"></i>
+                <div class="kpi-info">
+                    <span class="kpi-number" id="kpi-approval-rate">92%</span>
+                    <span class="kpi-label">Holistic Approval Rate</span>
+                </div>
+            </div>
+            <div class="kpi-card admin-kpi time-kpi">
+                <i class="fas fa-clock kpi-icon" style="background-color: #00bcd4;"></i>
+                <div class="kpi-info">
+                    <span class="kpi-number" id="kpi-time">1.2d</span>
+                    <span class="kpi-label">Avg. Validation Time</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="admin-grid-content">
+            <div class="chart-card card large-card">
+                <h2>AICTE SAP Distribution by Category (Simulated Bar Chart)</h2>
+                <div class="chart-placeholder bar-chart">
+                    <div class="bar-set">
+                        <div class="bar bar-1" style="height: 85%;">Co-curricular</div>
+                        <div class="bar bar-2" style="height: 65%;">Extracurricular</div>
+                        <div class="bar bar-3" style="height: 45%;">Internships</div>
+                        <div class="bar bar-4" style="height: 30%;">Patents/IP/Research</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card card small-card">
+                <h2>Live Validation Load (Simulated Doughnut Chart)</h2>
+                <div class="chart-placeholder donut-chart">
+                    <div class="donut-center">
+                        <span class="donut-percentage" id="donut-percent">92%</span>
+                        <span class="donut-label">Verified</span>
+                    </div>
+                </div>
+                
+                <div class="report-generator">
+                    <h3>Accreditation Reporting Suite</h3>
+                    <button 
+                        class="action-btn report-btn" 
+                        onclick="handleReportGeneration(this, 'NAAC')"
+                    >
+                        <i class="fas fa-file-pdf"></i> Generate NAAC Criterion III Report
+                    </button>
+                    <button 
+                        class="action-btn report-btn primary-btn" 
+                        onclick="handleReportGeneration(this, 'AICTE')"
+                    >
+                        <i class="fas fa-list-ol"></i> Generate AICTE SAP Compliance
+                    </button>
+                    <div class="loading-animation-bar"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="admin-controls-grid">
+            <div class="user-management card large-card">
+                <h2>Faculty Role & Mentorship Management</h2>
+                <div class="data-grid user-grid faculty-grid" id="faculty-grid">
+                    <div class="grid-row header">
+                        <div class="grid-cell user-name">Faculty Name</div>
+                        <div class="grid-cell user-role">Current Role</div>
+                        <div class="grid-cell user-status">Mentee Count</div>
+                        <div class="grid-cell user-actions">Actions</div>
+                    </div>
+                    
+                    </div>
+                <button class="action-btn primary-btn full-width" style="margin-top: 20px;" onclick="alert('Simulating Add New Faculty/Admin Modal.')">
+                    <i class="fas fa-user-plus"></i> Enroll New User
+                </button>
+            </div>
+
+            <div class="system-sidebar">
+                <div class="config-settings card small-card">
+                    <h2>NAAC/AICTE Rule Configuration</h2>
+                    <div class="config-item">
+                        <span class="config-label">AICTE SAP Weightage:</span>
+                        <button class="action-btn toggle-btn toggle-on"><i class="fas fa-sliders-h"></i> Configure</button>
+                    </div>
+                    <div class="config-item">
+                        <span class="config-label">Internship Proof Req.:</span>
+                        <button class="action-btn toggle-btn toggle-on"><i class="fas fa-toggle-on"></i> Mandatory</button>
+                    </div>
+                    <button class="action-btn primary-btn full-width" onclick="alert('Simulating System Rule Audit Log.')">
+                        <i class="fas fa-clipboard-list"></i> View System Rule Audit
+                    </button>
+                </div>
+                
+                <div class="activity-feed card small-card" style="background-color: white; color: var(--text-dark); border: 1px solid #ccc;">
+                    <h2>Student Access Control</h2>
+                    <div class="feed-content" style="height: auto; max-height: 250px; overflow-y: auto;" id="student-grid-mini">
+                        <p style="font-weight: 600; margin-bottom: 10px;">Quick Control List:</p>
+                        </div>
+                    <button class="action-btn config-btn full-width" style="margin-top: 15px;" onclick="alert('Simulating Bulk Student Import/Export.')">
+                        <i class="fas fa-upload"></i> Bulk Import Students
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div> <script src="admin-dashboard.js"></script> 
+</body>
+</html>

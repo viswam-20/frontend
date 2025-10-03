@@ -1,0 +1,90 @@
+/* --- Faculty Dashboard Overrides: Focus on Validation (Success/Green) --- */
+/* This file should be linked AFTER admin-dashboard.css */
+
+/* Variables are inherited from admin-dashboard.css */
+
+.faculty-title { 
+    color: var(--success-color); /* Title is now green */
+}
+.faculty-user { 
+    color: var(--success-color); 
+}
+
+/* Color Coding Faculty KPIs */
+.load-kpi { border-left-color: var(--secondary-color); }
+.load-kpi .kpi-icon { background-color: var(--secondary-color); }
+
+.mentee-kpi { border-left-color: var(--primary-color); }
+.mentee-kpi .kpi-icon { background-color: var(--primary-color); }
+
+.rate-kpi { border-left-color: var(--success-color); }
+.rate-kpi .kpi-icon { background-color: var(--success-color); }
+
+.points-kpi { border-left-color: #00bcd4; } 
+.points-kpi .kpi-icon { background-color: #00bcd4; }
+
+/* Validation Queue Grid Styling (Success Focused) */
+.queue-grid {
+    grid-template-columns: 2.5fr 1.5fr 1fr 1.5fr;
+    gap: 0;
+}
+
+.queue-grid .grid-row.header .grid-cell {
+    border-bottom: 3px solid var(--success-color); /* Highlight with success color */
+}
+
+.queue-grid .grid-row.data:hover .grid-cell {
+    background-color: #f4fff7; /* Light green hover */
+}
+
+.view-proof-btn {
+    background-color: var(--success-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.view-proof-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    animation: modal-fade-in 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 16px;
+    width: 70%;
+    box-shadow: var(--shadow-heavy);
+    position: relative;
+    animation: modal-slide-in 0.3s;
+}
+
+.close-button {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+}
+
+@keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-slide-in { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
