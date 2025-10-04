@@ -90,11 +90,15 @@
               <option>My Assignments</option>
               <option>CSE</option>
               <option>ECE</option>
+              <option>ME</option>
+              <option>EEE</option>
+              <option>IT</option>
             </select>
             <select class="form-select form-select-sm">
               <option>Priority</option>
               <option>High</option>
               <option>Medium</option>
+              <option>Low</option>
             </select>
             <button class="btn btn-success btn-sm">
               <i class="fas fa-check-double me-1"></i> Bulk Approve
@@ -158,7 +162,7 @@
 
     <!-- JS -->
     <script>
-      // Dummy student data
+      // Updated dummy student data
       const sampleDocs = [
         {
           id: 1,
@@ -195,14 +199,50 @@
           date: "2025-09-28",
           priority: "High",
         },
+        {
+          id: 6,
+          student: "Sneha K (22CSE056)",
+          category: "Project Report",
+          date: "2025-10-03",
+          priority: "High",
+        },
+        {
+          id: 7,
+          student: "Aditya M (21ECE021)",
+          category: "Academic Transcript",
+          date: "2025-10-01",
+          priority: "Medium",
+        },
+        {
+          id: 8,
+          student: "Ananya R (22IT045)",
+          category: "Internship Completion",
+          date: "2025-09-30",
+          priority: "Low",
+        },
+        {
+          id: 9,
+          student: "Vikram S (21ME033)",
+          category: "Co-curricular Certification",
+          date: "2025-09-29",
+          priority: "High",
+        },
+        {
+          id: 10,
+          student: "Priya D (22EEE019)",
+          category: "Project Report",
+          date: "2025-09-28",
+          priority: "Medium",
+        },
       ];
 
+      // Corrected priority badge function
       function getPriorityBadge(priority) {
         if (priority === "High")
-          return <span class="badge bg-danger">${priority}</span>;
+          return `<span class="badge bg-danger">${priority}</span>`;
         if (priority === "Medium")
-          return <span class="badge bg-warning">${priority}</span>;
-        return <span class="badge bg-secondary">${priority}</span>;
+          return `<span class="badge bg-warning">${priority}</span>`;
+        return `<span class="badge bg-secondary">${priority}</span>`;
       }
 
       function renderTable(data) {
