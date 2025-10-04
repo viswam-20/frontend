@@ -1,0 +1,219 @@
+/* Base Styling & Typography */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Lighter background for more contrast */
+    color: #111827;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header & Controls */
+.dashboard-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px; /* Increased gap */
+    margin-bottom: 25px; /* More space below header */
+}
+.dashboard-header h1 {
+    font-size: 28px; /* Slightly larger title */
+    font-weight: 500;
+    color: #1e3a8a;
+    margin: 0;
+}
+
+.header-actions {
+    display:flex;
+    gap:15px; /* Increased gap */
+    align-items:center;
+}
+.header-actions input {
+    padding:10px 15px; /* Increased padding */
+    border-radius:10px; /* Softer edges */
+    border:1px solid #d1d5db; /* Lighter border */
+    min-width:280px;
+    font-size: 15px;
+}
+.btn-report {
+    padding:10px 15px;background:#2563eb;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;
+    transition: background-color 0.2s;
+}
+.btn-report:hover {
+    background-color: #1d4ed8;
+}
+
+/* Status Funnel Cards */
+.status-funnel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px; /* Significantly increased gap */
+    margin-bottom: 35px;
+}
+
+.status-card {
+    background: white;
+    padding: 22px; /* Increased padding */
+    border-radius: 14px; /* Softer card corners */
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); /* Smoother shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-left: 6px solid; /* Thicker border highlight */
+}
+.status-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+.status-card p { font-size: 13px; color: #6b7280; margin: 0 0 8px 0; text-transform: uppercase; font-weight: 600; }
+.status-card h3 { font-size: 32px; margin: 0; font-weight: 700; color:#111827; }
+.status-card.pending { border-left-color: #f59e0b; }
+.status-card.approved { border-left-color: #10b981; }
+.status-card.declined { border-left-color: #ef4444; }
+.status-card.total { border-left-color: #6366f1; }
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 0;
+}
+.filter-controls select {
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    background-color: white;
+}
+
+/* Workload Section & Table */
+.workload-section {
+    background: white;
+    padding: 25px; 
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    margin-top: 30px; 
+}
+.workload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+.workload-header h2 {
+    font-size: 18px; 
+    color: #111827;
+    margin:0;
+    font-weight: 600;
+}
+.sort-select {
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead {
+    background-color: #f9fafb; 
+}
+
+th, td {
+    padding: 15px 18px; /* Increased vertical space */
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb; 
+    font-size: 14px;
+    color: #374151;
+}
+
+th {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
+tbody tr:hover { background-color: #f6f7fa; }
+
+/* High Priority Row Alert */
+tr.high-priority {
+    background-color: #fff7ed; 
+}
+tr.high-priority:hover { background-color: #fee9c4; }
+
+/* Priority Tag */
+.priority-tag {
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+}
+.priority-tag.high { background-color: #dc2626; }
+.priority-tag.medium { background-color: #f59e0b; }
+.priority-tag.low { background-color: #3b82f6; }
+
+/* Badge (Document Category) */
+.badge { padding:6px 12px;border-radius:12px;font-weight:600;font-size:13px; }
+.badge-marks { background-color:#fef2f2;color:#b91c1c; } /* Academic Transcript */
+.badge-internship { background-color:#e0f2fe;color:#0369a1; } /* Internship Completion */
+.badge-cert { background-color:#f3f4f6;color:#374151; } /* Co-curricular Certification */
+
+/* Actions */
+.actions { display:flex;gap:10px;justify-content:center; } 
+.btn-action { padding:9px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px; }
+.btn-action.approve { background:#10b981;color:white; transition:background 0.2s; }
+.btn-action.decline { background:#ef4444;color:white; transition:background 0.2s; }
+.btn-action:hover { opacity:0.9; }
+
+/* View button */
+.btn-view {
+    padding:9px 14px;
+    background:#4f46e5;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:14px;
+    transition: transform 0.2s;
+}
+.btn-view:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.status-column { text-align:center; }
+
+/* Analytics Panel Styling */
+.analytics-card {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width:1000px) {
+    .status-funnel { grid-template-columns: repeat(2,1fr); }
+    .header-actions { flex-direction: column; align-items: stretch; }
+    .header-actions input { min-width: 100%; }
+    .filter-controls { flex-direction: column; gap: 8px; }
+    .filter-controls select { width: 100%; }
+}

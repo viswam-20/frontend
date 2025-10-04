@@ -3,134 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Validation Hub</title>
-    
-    <link rel="stylesheet" href="admin-dashboard.css"> <link rel="stylesheet" href="faculty-dashboard.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>DCAS Faculty Dashboard - Verification Queue</title>
+    <link rel="stylesheet" href="faculty-dashboard.css">
 </head>
 <body>
 
-    <div class="dashboard-container faculty-dashboard">
+    <div class="dashboard-container">
         <header class="dashboard-header">
-            <h1 class="header-title faculty-title">🔬 Faculty Validation Hub</h1>
-            <div class="header-user faculty-user">Welcome, Prof. A. Smith</div>
+            <h1>Digital Credential Assurance System (DCAS)</h1>
+            <div class="header-actions">
+                <input type="search" placeholder="Search by Student ID, Name, or Document Type...">
+                <button class="btn-report">Analytics Report</button>
+            </div>
         </header>
 
-        <section class="kpi-bar">
-            <div class="kpi-card faculty-kpi load-kpi">
-                <i class="fas fa-hourglass-half kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-pending">12</span>
-                    <span class="kpi-label">Pending Validation Load</span>
-                </div>
+        <section class="status-funnel">
+            <div class="status-card pending">
+                <p>Pending My Review</p>
+                <h3>8</h3>
             </div>
-            <div class="kpi-card faculty-kpi mentee-kpi">
-                <i class="fas fa-handshake kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-mentees">35</span>
-                    <span class="kpi-label">Active Mentees Assigned</span>
-                </div>
+            <div class="status-card total">
+                <p>Total Department Submissions</p>
+                <h3>156</h3>
             </div>
-            <div class="kpi-card faculty-kpi rate-kpi">
-                <i class="fas fa-medal kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-rate">95%</span>
-                    <span class="kpi-label">My Approval Success Rate</span>
-                </div>
+            <div class="status-card approved">
+                <p>Approved This Week</p>
+                <h3>22</h3>
             </div>
-            <div class="kpi-card faculty-kpi points-kpi">
-                <i class="fas fa-graduation-cap kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-points">2,500</span>
-                    <span class="kpi-label">AICTE SAP Verified (YTD)</span>
-                </div>
+            <div class="status-card declined">
+                <p>Requires Re-upload</p>
+                <h3>5</h3>
             </div>
         </section>
 
-        <section class="validation-grid-content">
-            <div class="validation-queue card large-card">
-                <h2>Activity Validation Queue (<span id="queue-count">12</span> Critical)</h2>
-                <div class="data-grid queue-grid" id="validation-queue-grid">
-                    <div class="grid-row header">
-                        <div class="grid-cell student-name">Student & Activity</div>
-                        <div class="grid-cell activity-type">Type/Category</div>
-                        <div class="grid-cell sap-value">SAP Value</div>
-                        <div class="grid-cell queue-actions">Action</div>
+        <section class="workload-section">
+            <div class="workload-header">
+                <h2>Verification Workload — Pending Queue</h2>
+                <div style="display:flex;align-items:center;gap:15px;">
+                    <div class="filter-controls">
+                        <select id="departmentFilter">
+                            <option value="All">My Assignments</option>
+                            <option value="CSE">CSE</option>
+                            <option value="ECE">ECE</option>
+                        </select>
+                        <select id="statusFilter">
+                            <option value="Pending">Priority</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                        </select>
                     </div>
-                    </div>
+                    <button id="bulkApprove" class="btn-action approve">Bulk Approve</button>
+                </div>
             </div>
 
-            <div class="mentee-card card small-card">
-                <h2>Mentee Skill Insight 💡</h2>
-                <div class="chart-placeholder donut-chart faculty-donut" style="margin: 0 auto 30px auto;">
-                    <div class="donut-center">
-                        <span class="donut-percentage" style="color: var(--primary-color);">65%</span>
-                        <span class="donut-label" style="color: var(--primary-color);">Avg. Gap Closure</span>
-                    </div>
+            <div class="table-responsive">
+                <table id="facultyTable">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Student Name (ID)</th>
+                            <th>Document Category</th>
+                            <th>Submitted On</th>
+                            <th>Priority</th>
+                            <th class="status-column">View Document</th>
+                            <th class="status-column">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="facultyTbody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="workload-section" style="margin-top:30px;">
+            <div class="workload-header">
+                <h2>Verification Insight: System-wide Declines</h2>
+            </div>
+            <div class="analytics-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+                <div class="analytics-card" style="padding:15px;border:1px solid #e5e7eb;border-left:4px solid #ef4444;border-radius:10px;">
+                    <p style="font-size:12px;color:#ef4444;margin-bottom:5px;font-weight:600;">TOP DECLINE REASON</p>
+                    <h4 style="font-size:16px;margin:0;">Missing Official Seal (40%)</h4>
                 </div>
-                
-                <div class="mentee-tracking">
-                    <h3>Critical Mentees (High Gap)</h3>
-                    <div class="feed-content" style="height: 150px; overflow-y: scroll;" id="mentee-list">
-                        </div>
-                    <button 
-                        class="action-btn primary-btn full-width" 
-                        style="margin-top: 15px;"
-                        onclick="alert('Navigating to Detailed Mentorship Dashboard...')"
-                    >
-                        <i class="fas fa-chart-line"></i> Go to Mentee Hub
-                    </button>
+                <div class="analytics-card" style="padding:15px;border:1px solid #e5e7eb;border-left:4px solid #f59e0b;border-radius:10px;">
+                    <p style="font-size:12px;color:#f59e0b;margin-bottom:5px;font-weight:600;">AVG. REVIEW TIME</p>
+                    <h4 style="font-size:16px;margin:0;">4.5 Hours</h4>
+                </div>
+                <div class="analytics-card" style="padding:15px;border:1px solid #e5e7eb;border-left:4px solid #6366f1;border-radius:10px;">
+                    <p style="font-size:12px;color:#6366f1;margin-bottom:5px;font-weight:600;">MY COMPLIANCE SCORE</p>
+                    <h4 style="font-size:16px;margin:0;">92% (Above Dept Avg)</h4>
                 </div>
             </div>
         </section>
         
-        <section class="faculty-tools-grid">
-            <div class="feedback-tool card large-card">
-                <h2>Structured Feedback & Revision Tool</h2>
-                <p style="margin-bottom: 20px;">Utilize this tool to reject submissions, request revisions, or provide motivational feedback.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div>
-                        <label for="submission-select" style="font-weight: 600;">Target Submission:</label>
-                        <select id="submission-select" class="full-width" style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
-                            <option>-- Select Activity to target --</option>
-                            <option>Riya K. - Leadership Training</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="action-select" style="font-weight: 600;">Required Action:</label>
-                        <select id="action-select" class="full-width" style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
-                            <option>Request Major Revision</option>
-                            <option>Reject - Lack of Authenticity</option>
-                            <option>Positive Commendation</option>
-                        </select>
-                    </div>
-                </div>
-                <label for="feedback-text" style="font-weight: 600; display: block; margin-top: 20px;">Detailed Comments/Guidance:</label>
-                <textarea id="feedback-text" class="full-width" rows="4" style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-                
-                <button class="action-btn primary-btn" style="float: right; margin-top: 15px;" onclick="alert('Feedback submitted and student notified.')">
-                    <i class="fas fa-paper-plane"></i> Submit & Notify Student
-                </button>
-            </div>
-        </section>
-    </div> 
-
-    <div id="validation-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--text-dark); margin-bottom: 15px;">Document Validation & SAP Preview</h2>
-            <div id="modal-details" style="margin-bottom: 15px;">
-                <p><strong>Student:</strong> <span id="modal-student"></span> | <strong>Activity:</strong> <span id="modal-activity"></span></p>
-                <p style="font-weight: 700; color: var(--success-color);">Provisional SAP: <span id="modal-sap"></span></p>
-            </div>
-            <object id="proof-viewer" type="application/pdf" width="100%" height="400px" data="placeholder.pdf" style="border: 1px solid #ccc;"></object>
-            
-            <div class="modal-actions" style="margin-top: 20px; text-align: right;">
-                <button class="action-btn config-btn" style="background-color: var(--error-color); color: white;" onclick="handleModalAction('reject')"><i class="fas fa-times"></i> Reject/Revision</button>
-                <button class="action-btn primary-btn" style="background-color: var(--success-color);" onclick="handleModalAction('approve')"><i class="fas fa-check"></i> Approve & Verify SAP</button>
-            </div>
-        </div>
     </div>
 
-    <script src="faculty-dashboard.js"></script> 
+<script>
+    // --- New Dummy Data for 10 Students ---
+    const sampleDocs = [
+        { id: 1, student: "Dharnika A (22CSE045)", category: "Academic Transcript", date: "2025-10-02", priority: "High", badge: "badge-marks" },
+        { id: 2, student: "Asha R (22ECE012)", category: "Internship Completion", date: "2025-10-01", priority: "Medium", badge: "badge-internship" },
+        { id: 3, student: "Kiran V (21IT033)", category: "Co-curricular Certification", date: "2025-09-30", priority: "Medium", badge: "badge-cert" },
+        { id: 4, student: "Meera S (22ME078)", category: "Academic Transcript", date: "2025-09-29", priority: "Low", badge: "badge-marks" },
+        { id: 5, student: "Rahul P (21EEE011)", category: "Internship Completion", date: "2025-09-28", priority: "High", badge: "badge-internship" },
+        { id: 6, student: "Sana K (23CSE098)", category: "Co-curricular Certification", date: "2025-09-25", priority: "Low", badge: "badge-cert" },
+        { id: 7, student: "Vikram D (23ECE045)", category: "Academic Transcript", date: "2025-09-22", priority: "High", badge: "badge-marks" },
+        { id: 8, student: "Anita L (22ME012)", category: "Internship Completion", date: "2025-09-20", priority: "Medium", badge: "badge-internship" },
+        { id: 9, student: "Rohit S (21IT034)", category: "Co-curricular Certification", date: "2025-09-18", priority: "Low", badge: "badge-cert" },
+        { id: 10, student: "Priya N (23EEE067)", category: "Academic Transcript", date: "2025-09-15", priority: "Medium", badge: "badge-marks" }
+    ];
+
+    // --- Utility Functions ---
+    function getPriorityClass(priority) {
+        if (priority === "High") return "high";
+        if (priority === "Medium") return "medium";
+        return "low";
+    }
+
+    // --- Function to render table ---
+    function renderTable(data) {
+        const tbody = document.getElementById("facultyTbody");
+        tbody.innerHTML = "";
+
+        data.forEach(doc => {
+            const priorityClass = getPriorityClass(doc.priority);
+            const rowClass = doc.priority === 'High' ? 'high-priority' : '';
+            
+            const row = document.createElement("tr");
+            row.className = rowClass;
+            row.innerHTML = `
+                <td>${doc.id}</td>
+                <td>${doc.student}</td>
+                <td><span class="badge ${doc.badge}">${doc.category}</span></td>
+                <td>${doc.date}</td>
+                <td class="status-column"><span class="priority-tag ${priorityClass}">${doc.priority}</span></td>
+                <td class="status-column">
+                    <button class="btn-view">View Document</button>
+                </td>
+                <td class="actions">
+                    <button class="btn-action approve">Approve</button>
+                    <button class="btn-action decline">Decline</button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // --- Initial Load ---
+    renderTable(sampleDocs);
+</script>
 </body>
 </html>

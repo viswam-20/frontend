@@ -3,137 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Command Center</title>
-    
+    <title>DCAS Admin Dashboard - Full Oversight</title>
     <link rel="stylesheet" href="admin-dashboard.css"> 
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        /* CSS for the new charts */
+        #forecastChart, #retentionChart {
+            max-height: 250px; 
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="dashboard-container admin-dashboard">
-        <header class="dashboard-header">
-            <h1 class="header-title admin-title">👑 Smart Hub Admin Center</h1>
-            <div class="header-user admin-user">Welcome, Dr. C. Gates (System Architect)</div>
+    <div class="admin-dashboard-container">
+        <header class="admin-header">
+            <h1>ADMIN  MANAGEMENT DASHBOARD </h1>
+            <p>System-wide strategic oversight, forecasting, and compliance.</p>
         </header>
 
-        <section class="kpi-bar">
-            <div class="kpi-card admin-kpi total-students-kpi">
-                <i class="fas fa-users kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-students">3,250</span>
-                    <span class="kpi-label">Total Registered Students</span>
+        <section class="kpi-grid">
+            <div class="kpi-card backlog">
+                <p>Verification Backlog</p>
+                <h3>125</h3>
+            </div>
+            <div class="kpi-card pass-rate">
+                <p>First-Time Pass Rate</p>
+                <h3>87%</h3>
+            </div>
+            <div class="kpi-card approval-time">
+                <p>Avg. Approval Time</p>
+                <h3>5.2 Hours</h3>
+            </div>
+            <div class="kpi-card total-users">
+                <p>Total Student Users</p>
+                <h3>3,450</h3>
+            </div>
+        </section>
+
+        <section class="visualization-grid complex-grid">
+            
+            <div class="chart-container forecast-chart-container">
+                <h2 class="chart-title">Predictive Submission Forecasting (7-Day View)</h2>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="forecastChart"></canvas>
                 </div>
             </div>
-            <div class="kpi-card admin-kpi submitted-kpi">
-                <i class="fas fa-cloud-upload-alt kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-submitted">1,450</span>
-                    <span class="kpi-label">Activities Submitted (L6M)</span>
+
+            <div class="chart-container compliance-chart">
+                <h2 class="chart-title">Document Status by Department</h2>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="complianceChart"></canvas>
                 </div>
             </div>
-            <div class="kpi-card admin-kpi approval-kpi">
-                <i class="fas fa-check-double kpi-icon"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-approval-rate">92%</span>
-                    <span class="kpi-label">Holistic Approval Rate</span>
+
+            <div class="chart-container faculty-training-chart">
+                <h2 class="chart-title">Faculty Training Needs: High Decline/Slow Approval</h2>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="facultyTrainingChart"></canvas>
                 </div>
             </div>
-            <div class="kpi-card admin-kpi time-kpi">
-                <i class="fas fa-clock kpi-icon" style="background-color: #00bcd4;"></i>
-                <div class="kpi-info">
-                    <span class="kpi-number" id="kpi-time">1.2d</span>
-                    <span class="kpi-label">Avg. Validation Time</span>
+
+            <div class="chart-container trend-chart">
+                <h2 class="chart-title">Top 5 Decline Reasons (Last 30 Days)</h2>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="declineReasonsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container workload-map">
+                <h2 class="chart-title">Faculty Workload Distribution (Pending Docs)</h2>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="workloadChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container retention-monitor">
+                <h2 class="chart-title">Data Retention Compliance Status</h2>
+                <div class="retention-content">
+                    <div class="gauge-sim">
+                        <div class="gauge-bar red-fill" style="width: 95%;"></div>
+                        <div class="gauge-value">95% Compliant</div>
+                    </div>
+                    <p>Files scheduled for archive/deletion in 30 days: <span class="text-strong">4,200</span></p>
                 </div>
             </div>
         </section>
 
-        <section class="admin-grid-content">
-            <div class="chart-card card large-card">
-                <h2>AICTE SAP Distribution by Category (Simulated Bar Chart)</h2>
-                <div class="chart-placeholder bar-chart">
-                    <div class="bar-set">
-                        <div class="bar bar-1" style="height: 85%;">Co-curricular</div>
-                        <div class="bar bar-2" style="height: 65%;">Extracurricular</div>
-                        <div class="bar bar-3" style="height: 45%;">Internships</div>
-                        <div class="bar bar-4" style="height: 30%;">Patents/IP/Research</div>
-                    </div>
+        <section class="management-tools-grid">
+            <div class="tool-card integrity-monitor">
+                <h2>System Integrity Monitor</h2>
+                <div class="monitor-status">
+                    <div class="status-item"><span class="traffic-light green"></span>OCR Latency: <span class="text-strong">450ms</span></div>
+                    <div class="status-item"><span class="traffic-light amber"></span>DB Query Speed: <span class="text-strong">950ms</span></div>
+                    <div class="status-item"><span class="traffic-light green"></span>Storage Capacity: <span class="text-strong">78% Free</span></div>
                 </div>
+                <button class="btn-tool-access">View Logs</button>
+            </div>
+            
+            <div class="tool-card benchmarking">
+                <h2>External Benchmarking Panel</h2>
+                <p>Target Avg. Approval Time: <span class="text-strong">6.0 Hours (Industry)</span></p>
+                <p>DCAS Performance: <span class="text-strong green-text">5.2 Hours (EXCELLENT)</span></p>
+                <div class="benchmark-gauge">
+                    <div class="gauge-sim-small">
+                        <div class="gauge-segment green-bg"></div>
+                        <div class="gauge-segment amber-bg"></div>
+                        <div class="gauge-segment red-bg"></div>
+                    </div>
+                    <span class="benchmark-label">6.0h Target</span>
+                </div>
+                <button class="btn-tool-access">Set Benchmarks</button>
             </div>
 
-            <div class="report-card card small-card">
-                <h2>Live Validation Load (Simulated Doughnut Chart)</h2>
-                <div class="chart-placeholder donut-chart">
-                    <div class="donut-center">
-                        <span class="donut-percentage" id="donut-percent">92%</span>
-                        <span class="donut-label">Verified</span>
-                    </div>
-                </div>
-                
-                <div class="report-generator">
-                    <h3>Accreditation Reporting Suite</h3>
-                    <button 
-                        class="action-btn report-btn" 
-                        onclick="handleReportGeneration(this, 'NAAC')"
-                    >
-                        <i class="fas fa-file-pdf"></i> Generate NAAC Criterion III Report
-                    </button>
-                    <button 
-                        class="action-btn report-btn primary-btn" 
-                        onclick="handleReportGeneration(this, 'AICTE')"
-                    >
-                        <i class="fas fa-list-ol"></i> Generate AICTE SAP Compliance
-                    </button>
-                    <div class="loading-animation-bar"></div>
-                </div>
+            <div class="tool-card policy-editor">
+                <h2>Policy Rule Editor</h2>
+                <p>Modify Dynamic Compliance rules. <span class="text-strong">5 Active Rules</span>. Last update: 2025-09-15.</p>
+                <button class="btn-tool-access">Edit Rules</button>
             </div>
-        </section>
-        
-        <section class="admin-controls-grid">
-            <div class="user-management card large-card">
-                <h2>Faculty Role & Mentorship Management</h2>
-                <div class="data-grid user-grid faculty-grid" id="faculty-grid">
-                    <div class="grid-row header">
-                        <div class="grid-cell user-name">Faculty Name</div>
-                        <div class="grid-cell user-role">Current Role</div>
-                        <div class="grid-cell user-status">Mentee Count</div>
-                        <div class="grid-cell user-actions">Actions</div>
-                    </div>
-                    
-                    </div>
-                <button class="action-btn primary-btn full-width" style="margin-top: 20px;" onclick="alert('Simulating Add New Faculty/Admin Modal.')">
-                    <i class="fas fa-user-plus"></i> Enroll New User
-                </button>
+            <div class="tool-card audit-trail">
+                <h2>Audit Trail & Rollback Viewer</h2>
+                <p>Forensic log of all system actions. <span class="text-strong">3,450 Actions Logged</span>. Last audit: 1 Hour Ago.</p>
+                <button class="btn-tool-access">View Audit Log</button>
             </div>
-
-            <div class="system-sidebar">
-                <div class="config-settings card small-card">
-                    <h2>NAAC/AICTE Rule Configuration</h2>
-                    <div class="config-item">
-                        <span class="config-label">AICTE SAP Weightage:</span>
-                        <button class="action-btn toggle-btn toggle-on"><i class="fas fa-sliders-h"></i> Configure</button>
-                    </div>
-                    <div class="config-item">
-                        <span class="config-label">Internship Proof Req.:</span>
-                        <button class="action-btn toggle-btn toggle-on"><i class="fas fa-toggle-on"></i> Mandatory</button>
-                    </div>
-                    <button class="action-btn primary-btn full-width" onclick="alert('Simulating System Rule Audit Log.')">
-                        <i class="fas fa-clipboard-list"></i> View System Rule Audit
-                    </button>
-                </div>
-                
-                <div class="activity-feed card small-card" style="background-color: white; color: var(--text-dark); border: 1px solid #ccc;">
-                    <h2>Student Access Control</h2>
-                    <div class="feed-content" style="height: auto; max-height: 250px; overflow-y: auto;" id="student-grid-mini">
-                        <p style="font-weight: 600; margin-bottom: 10px;">Quick Control List:</p>
-                        </div>
-                    <button class="action-btn config-btn full-width" style="margin-top: 15px;" onclick="alert('Simulating Bulk Student Import/Export.')">
-                        <i class="fas fa-upload"></i> Bulk Import Students
-                    </button>
-                </div>
+            <div class="tool-card role-manager">
+                <h2>User Role & Delegation Management</h2>
+                <p>Manage faculty permissions. <span class="text-strong">125 Faculty Accounts</span>. 4 HODs delegated.</p>
+                <button class="btn-tool-access">Manage Users</button>
+            </div>
+            
+             <div class="tool-card integrity-score-tool">
+                <h2>Student Profile Integrity Score</h2>
+                <p>Filter student list by risk factors (e.g., late submissions, frequent re-uploads).</p>
+                <p><span class="text-strong">85 Students</span> currently below Score 70.</p>
+                <button class="btn-tool-access">View High-Risk List</button>
             </div>
         </section>
 
-    </div> <script src="admin-dashboard.js"></script> 
+    </div>
+
+    
+<script>
+    Chart.register(ChartDataLabels);
+
+    const chartColors = {
+        primary: '#6366f1', // Indigo
+        success: '#10b981', // Emerald
+        danger: '#ef4444', // Red
+        warning: '#f59e0b', // Amber
+        info: '#3b82f6', // Blue
+        muted: '#94a3b8' // Slate
+    };
+    
+    // --- Data Sets ---
+    const departmentData = {
+        labels: ['Comp. Sci.', 'Mech. Eng.', 'Elec. Eng.', 'Civil Eng.', 'Arts & Sci.'],
+        approved: [450, 310, 280, 190, 120],
+        declined: [35, 18, 12, 10, 5],
+        pending: [45, 30, 20, 25, 5]
+    };
+
+    const declineReasonsData = {
+        labels: ['Missing Seal', 'Dates Mismatch', 'Illegible Scan', 'Incorrect Doc Type', 'Duration Too Short'],
+        counts: [45, 25, 15, 12, 10]
+    };
+
+    const workloadData = {
+        labels: ['Prof. R. Patel (CS)', 'Dr. S. Khan (ME)', 'Dr. L. Chen (EE)', 'Prof. J. Sharma (CS)', 'Prof. A. Singh (CE)'],
+        pendingDocs: [40, 25, 18, 15, 12]
+    };
+    
+    // NEW DATA: Predictive Submission Forecasting
+    const forecastData = {
+        labels: ['Today', 'Day +1', 'Day +2', 'Day +3', 'Day +4', 'Day +5', 'Day +6'],
+        actual: [180, 210, 195, 230, 0, 0, 0], // 0 for future days
+        predicted: [190, 220, 200, 235, 290, 310, 270], // Forecasted spike
+    };
+
+    // NEW DATA: Faculty Training Needs (High Decline Rate & Long Avg Approval Time)
+    const facultyTrainingData = {
+        labels: ['Prof. X', 'Prof. Y', 'Prof. Z', 'Prof. A', 'Prof. B'],
+        declineRate: [15, 12, 8, 4, 3], // Percentage of declines
+        approvalTime: [12.5, 7.8, 5.2, 3.1, 4.0] // In hours
+    };
+
+    // --- Chart Rendering Functions ---
+    
+    // 1. Predictive Submission Forecasting (Line Chart)
+    const renderForecastChart = () => {
+        const ctx = document.getElementById('forecastChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: forecastData.labels,
+                datasets: [
+                    {
+                        label: 'Predicted Submissions',
+                        data: forecastData.predicted,
+                        borderColor: chartColors.primary,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5
+                    },
+                    {
+                        label: 'Actual Submissions',
+                        data: forecastData.actual,
+                        borderColor: chartColors.warning,
+                        backgroundColor: 'transparent',
+                        pointStyle: 'circle',
+                        pointRadius: 4,
+                        borderDash: [5, 5]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'Day' } },
+                    y: { title: { display: true, text: 'Volume' }, beginAtZero: true }
+                },
+                plugins: {
+                    legend: { position: 'bottom' },
+                    title: { display: false }
+                }
+            }
+        });
+    };
+
+    // 2. Faculty Training Needs Identifier (Combined Bar Chart)
+    const renderFacultyTrainingChart = () => {
+        const ctx = document.getElementById('facultyTrainingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: facultyTrainingData.labels,
+                datasets: [
+                    {
+                        label: 'Decline Rate (%)',
+                        data: facultyTrainingData.declineRate,
+                        backgroundColor: chartColors.danger, // High Risk
+                        yAxisID: 'y1'
+                    },
+                    {
+                        label: 'Avg Approval Time (hrs)',
+                        data: facultyTrainingData.approvalTime,
+                        backgroundColor: chartColors.info, // Efficiency
+                        yAxisID: 'y2'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { stacked: false },
+                    y1: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        title: { display: true, text: 'Decline Rate (%)' }
+                    },
+                    y2: {
+                        type: 'linear',
+                        position: 'right',
+                        grid: { drawOnChartArea: false }, // Hide gridlines for clarity
+                        title: { display: true, text: 'AAT (hrs)' }
+                    }
+                },
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+    };
+
+    // 3. Document Status by Department (Stacked Bar Chart - from previous code)
+    const renderComplianceChart = () => {
+        const ctx = document.getElementById('complianceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: departmentData.labels,
+                datasets: [
+                    { label: 'Approved', data: departmentData.approved, backgroundColor: chartColors.success, stack: 'status' },
+                    { label: 'Declined', data: departmentData.declined, backgroundColor: chartColors.danger, stack: 'status' },
+                    { label: 'Pending', data: departmentData.pending, backgroundColor: chartColors.warning, stack: 'status' }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }, plugins: { legend: { position: 'top' } } }
+        });
+    };
+
+    // 4. Decline Reasons Trend Chart (Horizontal Bar Chart - from previous code)
+    const renderDeclineReasonsChart = () => {
+        const ctx = document.getElementById('declineReasonsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: declineReasonsData.labels,
+                datasets: [{ label: 'Decline Count', data: declineReasonsData.counts, backgroundColor: chartColors.primary }]
+            },
+            options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true } }, plugins: { legend: { display: false } } }
+        });
+    };
+
+    // 5. Faculty Workload Distribution (Bar Chart - from previous code)
+    const renderWorkloadChart = () => {
+        const ctx = document.getElementById('workloadChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: workloadData.labels,
+                datasets: [{ 
+                    label: 'Pending Documents', 
+                    data: workloadData.pendingDocs, 
+                    backgroundColor: [chartColors.danger, chartColors.warning, chartColors.primary, chartColors.success, chartColors.info]
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } }
+        });
+    };
+
+    // Run all chart rendering when the page loads
+    window.onload = () => {
+        renderComplianceChart();
+        renderDeclineReasonsChart();
+        renderWorkloadChart();
+        renderForecastChart();
+        renderFacultyTrainingChart();
+    };
+</script>
 </body>
 </html>
