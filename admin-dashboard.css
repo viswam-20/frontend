@@ -1,0 +1,299 @@
+/* Base Styling & Typography */
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #f8f9fa; 
+    color: #343a40; 
+    margin: 0;
+    padding: 0;
+    font-size: 16px; 
+}
+
+.admin-dashboard-container {
+    padding: 30px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.admin-header h1 {
+    font-size: 36px; 
+    font-weight: 400; 
+    color: #1a202c; 
+    margin: 0;
+}
+
+.admin-header p {
+    font-size: 17px; 
+    color: #6c757d;
+    margin-top: 8px;
+}
+
+/* --- 1. KPI Grid --- */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.kpi-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid;
+    transition: transform 0.3s ease-in-out;
+}
+
+.kpi-card:hover {
+    transform: translateY(-3px);
+}
+
+.kpi-card p {
+    font-size: 15px; 
+    color: #6c757d;
+    margin: 0 0 10px 0; 
+    text-transform: uppercase;
+    font-weight: 500; 
+}
+
+.kpi-card h3 {
+    font-size: 44px; 
+    margin: 0;
+    font-weight: 700;
+    color: #1a202c; 
+}
+
+/* KPI Specific Colors */
+.kpi-card.backlog { border-top-color: #f59e0b; }
+.kpi-card.pass-rate { border-top-color: #10b981; }
+.kpi-card.approval-time { border-top-color: #6366f1; }
+.kpi-card.total-users { border-top-color: #adb5bd; }
+
+/* --- 2. Visualization Grid --- */
+.complex-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr; /* Forecasting is widest, then two smaller columns */
+    grid-template-rows: repeat(2, minmax(300px, auto)); /* Row 1 for big charts, Row 2 for smaller charts */
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.chart-container {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex; 
+    flex-direction: column;
+}
+
+.chart-container:nth-child(1) { grid-column: span 3; } /* Forecasting chart spans all 3 columns on row 1 */
+.chart-container:nth-child(2) { grid-column: span 1; } /* Compliance chart takes 1/3 */
+.chart-container:nth-child(3) { grid-column: span 1; } /* Faculty Training takes 1/3 */
+.chart-container:nth-child(4) { grid-column: span 1; } /* Decline Reasons takes 1/3 */
+.chart-container:nth-child(5) { grid-column: span 1; } /* Workload takes 1/3 */
+.chart-container:nth-child(6) { grid-column: span 1; } /* Retention Monitor takes 1/3 */
+
+
+.chart-title {
+    font-size: 20px; 
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+.chart-canvas-wrapper {
+    flex-grow: 1; 
+    position: relative; 
+}
+canvas {
+    width: 100% !important; 
+    height: 100% !important;
+}
+
+/* --- 3. Management Tools Grid --- */
+.management-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.tool-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #0d6efd; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.tool-card h2 {
+    font-size: 20px; 
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.tool-card p {
+    font-size: 15px; 
+    color: #495057;
+    margin-bottom: 15px;
+    flex-grow: 1; 
+}
+
+.text-strong {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.green-text {
+    color: #10b981;
+    font-weight: 700;
+}
+
+/* --- System Integrity Monitor (Traffic Lights) --- */
+.monitor-status {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #495057;
+}
+
+.traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.traffic-light.green { background-color: #10b981; }
+.traffic-light.amber { background-color: #f59e0b; }
+.traffic-light.red { background-color: #ef4444; }
+
+
+/* --- Data Retention Gauge Simulation --- */
+.retention-content {
+    margin-top: 10px;
+}
+
+.gauge-sim {
+    width: 100%;
+    height: 30px;
+    background-color: #e5e7eb;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gauge-bar {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 0.5s ease-in-out;
+}
+
+.red-fill {
+    background-color: #10b981; /* Default is green */
+    /* Only 95% compliant means 5% of the bar is red (non-compliant) */
+    background-image: linear-gradient(to right, #10b981 95%, #ef4444 95%);
+    width: 100%;
+}
+
+.gauge-value {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* --- External Benchmarking Gauge Simulation --- */
+.benchmark-gauge {
+    margin-bottom: 15px;
+}
+
+.gauge-sim-small {
+    display: flex;
+    height: 20px;
+    width: 80%; /* Smaller gauge visual */
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.gauge-segment {
+    flex: 1; /* Divide equally */
+    position: relative;
+}
+
+.green-bg { background-color: #10b981; }
+.amber-bg { background-color: #f59e0b; }
+.red-bg { background-color: #ef4444; }
+
+.benchmark-label {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+/* Button Styling (Same as previous, ensuring consistency) */
+.btn-tool-access {
+    padding: 12px 18px; 
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px; 
+    transition: background-color 0.2s, transform 0.2s;
+    display: block; 
+    width: 100%;
+    text-align: center;
+}
+
+.btn-tool-access:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .complex-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns on mid-sized screens */
+        grid-template-rows: auto;
+    }
+    .chart-container:nth-child(1) { grid-column: span 2; } /* Forecasting spans 2 columns */
+    .chart-container:nth-child(2), .chart-container:nth-child(3), .chart-container:nth-child(4), .chart-container:nth-child(5), .chart-container:nth-child(6) { grid-column: span 1; }
+    .management-tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .kpi-grid, .complex-grid, .management-tools-grid {
+        grid-template-columns: 1fr;
+    }
+    .chart-container:nth-child(1), .chart-container:nth-child(2), .chart-container:nth-child(3), .chart-container:nth-child(4), .chart-container:nth-child(5), .chart-container:nth-child(6) { grid-column: span 1; }
+    .admin-header h1 { font-size: 28px; }
+}
