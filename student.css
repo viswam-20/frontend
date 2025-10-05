@@ -1,4 +1,4 @@
-/* Reset */
+/* ---------- RESET ---------- */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Segoe UI',sans-serif;
@@ -7,39 +7,40 @@ body{
   display:flex;
   height:100vh;
   overflow:hidden;
-}/* Sidebar */
+}
+
+/* ---------- SIDEBAR ---------- */
 .sidebar {
   width: 220px;
-  background: linear-gradient(180deg, #232946, #6469a1); /* Deep blue to muted blue */
+  background: linear-gradient(180deg, #232946, #6469a1);
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
 }
-
-
-
 .sidebar .logo{font-size:2rem;margin-bottom:30px;}
 .sidebar nav ul{list-style:none;width:100%;}
 .sidebar nav li{
-  padding:15px 20px;display:flex;align-items:center;cursor:pointer;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  cursor:pointer;
   transition:background 0.3s;
 }
 .sidebar nav li i{margin-right:10px;}
 .sidebar nav li:hover,.sidebar nav li.active{background:rgba(255,255,255,0.2);}
 
-/* Main */
+/* ---------- MAIN CONTENT ---------- */
 .main-content{flex:1;display:flex;flex-direction:column;overflow-y:auto;}
 
-/* Top bar */
-/* Top bar */
+/* ---------- TOPBAR ---------- */
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
-  background: linear-gradient(90deg, #4e54c8, #8f94fb); /* Bright blue gradient */
+  background: linear-gradient(90deg, #4e54c8, #8f94fb);
   color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -52,7 +53,7 @@ body{
 }
 .search-container input{
   border:none;background:transparent;outline:none;
-  margin-left:8px;color:rgb(0, 0, 0);
+  margin-left:8px;color:black;
 }
 .search-container input::placeholder{color:rgba(255,255,255,0.7);}
 .top-right{display:flex;align-items:center;gap:15px;}
@@ -62,7 +63,7 @@ body{
 .profile-info .name{font-weight:600;}
 .profile-info .year{font-size:0.8rem;color:lightgray;}
 
-/* Notification */
+/* ---------- NOTIFICATION ---------- */
 .notification{position:relative;}
 .notification button{
   background:none;border:none;font-size:1.2rem;cursor:pointer;color:white;
@@ -77,72 +78,109 @@ body{
 .notif-list li:last-child{border:none;}
 .notif-list.show{display:block;}
 
-/* Banner */
-/* Welcome banner */
+/* ---------- BANNER ---------- */
 .welcome-banner {
-  background: linear-gradient(90deg, #ffb799, #ff7e5f); /* Coral peach gradient */
+  background: linear-gradient(90deg, #ffb799, #ff7e5f);
   color: white;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
 }
-/* Content area */
-.content-area{
-  display:flex;
-  justify-content:center;
-  margin:20px;
-}
 
-/* Grid section */
-.grid-section{
-  flex:1;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:35px; /* More spacious */
-}
+/* ---------- GRID SECTION ---------- */
+.content-area{display:flex;justify-content:center;margin:20px;}
+.grid-section{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:35px;}
 .grid-card{
-  padding:25px;
-  border-radius:18px;
-  text-align:center;
-  color:#fff;
+  padding:25px;border-radius:18px;text-align:center;color:#fff;
   box-shadow:0 2px 10px rgba(0,0,0,0.12);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:0.3s;
 }
+.grid-card:hover{transform:translateY(-5px);}
 .grid-card i{font-size:2rem;margin-bottom:10px;display:block;}
 .grid-card h4{margin-bottom:10px;font-size:1rem;}
-.grid-card:hover{transform:translateY(-5px);transition:0.3s;}
 
-/* Update button (Electric Blue Neon) */
+/* ---------- ADD BUTTON ---------- */
 .update-btn {
-  background: white;
-  border: 1.5px solid #fff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  color: #2c5364; /* dark blue text for contrast */
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.update-btn:hover {
-  background: #f0f0f0; /* light gray hover */
-  color: #0f2027;      /* darker blue on hover */
+  background: white;border: 1.5px solid #fff;
+  padding: 6px 12px;border-radius: 6px;
+  color: #2c5364;font-size: 0.8rem;font-weight: 600;
+  cursor: pointer;transition: all 0.3s ease;
 }
 .update-btn:hover {
   box-shadow:0 0 10px #00C6FF, 0 0 20px #0072FF;
   transform:scale(1.05);
 }
 
-/* Grid gradients (Subtle Professional Palette) */
-.grad1{background:linear-gradient(135deg,#4B6CB7,#182848);}   /* Academics */
-.grad2{background:linear-gradient(135deg,#5C258D,#4389A2);}   /* Projects */
-.grad3{background:linear-gradient(135deg,#f7a531,#ffd36b);}   /* Sports */
-.grad4{background:linear-gradient(135deg,#8360C3,#2EBF91);}   /* Arts */
-.grad5{background:linear-gradient(135deg,#134E5E,#71B280);}   /* Leadership */
-.grad6{background:linear-gradient(135deg,#8E2DE2,#4A00E0);}   /* Volunteer */
-.grad7{background:linear-gradient(135deg,#FF5F6D,#FFC371);}   /* Events */
-.grad8{background:linear-gradient(135deg,#56CCF2,#2F80ED);}   /* Extra-Curricular */
-.grad9{background:linear-gradient(135deg,#606c88,#3f4c6b);}   /* Others */
+/* ---------- GRID COLORS ---------- */
+.grad1{background:linear-gradient(135deg,#4B6CB7,#182848);}
+.grad2{background:linear-gradient(135deg,#5C258D,#4389A2);}
+.grad3{background:linear-gradient(135deg,#f7a531,#ffd36b);}
+.grad4{background:linear-gradient(135deg,#8360C3,#2EBF91);}
+.grad5{background:linear-gradient(135deg,#134E5E,#71B280);}
+.grad6{background:linear-gradient(135deg,#8E2DE2,#4A00E0);}
+.grad7{background:linear-gradient(135deg,#FF5F6D,#FFC371);}
+.grad8{background:linear-gradient(135deg,#56CCF2,#2F80ED);}
+.grad9{background:linear-gradient(135deg,#606c88,#3f4c6b);}
+
+/* ---------- POPUP MODAL ---------- */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.popup-content {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 10px;
+  width: 450px;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.popup-content h2 {
+  text-align: center;
+  color: #2c3e50;
+}
+.popup-content label {
+  font-weight: 600;
+  margin-top: 8px;
+}
+.popup-content input,
+.popup-content textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.popup-content textarea {
+  resize: none;
+  height: 70px;
+}
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  gap: 10px;
+}
+.popup-buttons button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.cancelBtn {background: #ccc;}
+.uploadBtn {
+  background: #4e54c8;
+  color: white;
+}
+.uploadBtn:hover {background: #6c6ff9;}
